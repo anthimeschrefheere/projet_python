@@ -3,6 +3,7 @@ import parameters
 import initialisation
 import action
 import decision
+import comptage_point
 '''
 import affichage_joueur
 '''
@@ -17,14 +18,18 @@ pioche=[]
 revealcard=[]
 split_J1=[]
 split_J2=[]
+ident_1=[]
+ident_2=[]
 choix=""
 JOUEUR1=""
 JOUEUR2=""
 nom_1=""
 nom_2=""
+somme_1=""
+somme_2=""
+
 nom_1=parameters.identify(nom_1,1)
 nom_2=parameters.identify(nom_1,2)
-
 print "______________________liste primaire____________________________"
 initialisation.card_game(liste,nombre,figure)
 print'_______________________debut melange_____________________________'
@@ -58,3 +63,16 @@ action.split(joueur_1,split_J1)
 action.split(joueur_2,split_J2)
 print "split_J1", split_J1
 print "split_J2", split_J2
+split_J1.sort()
+split_J2.sort()
+print split_J1
+print split_J2
+comptage_point.comptage(split_J1,ident_1)
+comptage_point.comptage(split_J2,ident_2)
+ident_1.sort()
+ident_2.sort()
+ident_1.reverse()
+ident_2.reverse()
+print ident_1
+print ident_2
+comptage_point.vainqueur(ident_1,ident_2,nombre,somme_1,somme_2,nom_1,nom_2)
