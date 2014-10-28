@@ -75,4 +75,4 @@ ident_1.reverse()
 ident_2.reverse()
 print ident_1
 print ident_2
-comptage_point.vainqueur(ident_1,ident_2,nombre,somme_1,somme_2,nom_1,nom_2)
+comptage_point.comparateur(ident_1,ident_2,split_J1,split_J2,nombre,somme_1,somme_2,nom_1,nom_2)

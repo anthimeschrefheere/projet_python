@@ -9,14 +9,14 @@ def comptage(liste1,liste2):
 			i=j
 	liste2.append(j-i)
 
-def somme(split,nombre,somme_x):
-	somme=len(nombre[split[0]])
+def somme(split,nombre,sommeo):
+	somme=nombre.index(split[0])
 	i=1
 	while i<len(split):
 		if split[i]!=split[i-1]:
-			somme+=len(nombre[split[i]])
+			somme+=nombre.index(split[i])
 		i+=1
-	return somme_x
+	return somme
 
 def egalite(split_1,split_2,nombre,somme_1,somme_2,nom_1,nom_2):
 	somme_1=somme(split_1,nombre,somme_1)
@@ -26,27 +26,21 @@ def egalite(split_1,split_2,nombre,somme_1,somme_2,nom_1,nom_2):
 	elif somme_1<somme_2:
 		print nom_2, " est le vainqueur"
 	else:
-		print "pure egalite"
+		print "egalite parfaite"
 
 
-def comparateur(ident_1,ident_2,nombre,somme_1,somme_2,nom_1,nom_2):
+def comparateur(ident_1,ident_2,split_1,split_2,nombre,somme_1,somme_2,nom_1,nom_2):
 	i=0
-	while i!=len(ident_1):
-		if ident_1[i]==ident_2[i]:
+	while ident_1[i]==ident_2[i]:
 			i+=1
-		elif ident_1[i]>ident_2[i]:
-			print nom_1, " est vainqueur"
-			break
-		elif ident_2[i]>ident_1[i]:
-			print nom_2, " est vainqueur"
-			break
-	else:
+			if i>=min(len(ident_1),len(ident_2))-1:
+				break
+	if ident_1[i]>ident_2[i]:
+		print nom_1, " est vainqueur"
+	elif ident_2[i]>ident_1[i]:
+		print nom_2, " est vainqueur"
+	elif ident_1[i]==ident_2[i]:
 		egalite(split_1,split_2,nombre,somme_1,somme_2,nom_1,nom_2)
 
 
 
-def vainqueur(ident_1,ident_2,nombre,somme_1,somme_2,nom_1,nom_2):
-	if len(ident_1)<=len(ident_2):
-		comparateur(ident_1,ident_2,nombre,somme_1,somme_2,nom_1,nom_2)
-	else:
-		comparateur(ident_2,ident_1,nombre,somme_1,somme_2,nom_1,nom_2)
