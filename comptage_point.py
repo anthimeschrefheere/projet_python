@@ -9,7 +9,7 @@ def comptage(liste1,liste2):
 			i=j
 	liste2.append(j-i)
 
-def somme(split,nombre,sommeo):
+def somme(split,nombre,somme):
 	somme=nombre.index(split[0])
 	i=1
 	while i<len(split):

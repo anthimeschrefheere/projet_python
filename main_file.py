@@ -28,8 +28,8 @@ nom_2=""
 somme_1=""
 somme_2=""
 
-nom_1=parameters.identify(nom_1,1)
-nom_2=parameters.identify(nom_1,2)
+nom_1=parameters.identify(nom_1,nom_2,1)
+nom_2=parameters.identify(nom_2,nom_1,2)
 print "______________________liste primaire____________________________"
 initialisation.card_game(liste,nombre,figure)
 print'_______________________debut melange_____________________________'
