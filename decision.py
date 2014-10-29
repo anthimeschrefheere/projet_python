@@ -74,15 +74,60 @@ def choice_card (JOUEUR1,JOUEUR2,liste1,liste2,liste3,nom_1,nom_2):
         choice_card2(JOUEUR2,JOUEUR1,liste1,liste3,liste2,nom_2)
     return liste1,liste2,liste3
 
-def defausse(liste1,liste2,nom): #voir comment khaoula a modifie le programme"
+def defausse(liste1,liste2,nom): 
     print "tour de ", nom
     print liste1
     print "donnez la position des deux cartes a defausser une carte entre 1 et 10"
-    choix1=input("choix 1:")
-    choix2=input("choix 2:")
+    erreur=1
+    while erreur:
+        erreur=0
+        try:
+            print "choix1"
+            choix1=int(raw_input())
+            carte_tire=liste1[choix1-1]
+        except ValueError:
+            print "veuillez entrer un nombre valide"
+            erreur=1
+        except IndexError:
+            print "veuillez entrer un nombre compris entre 1 et ",len(liste1)
+            erreur=1
+        if choix1==0:
+            print "veuillez entrer un nombre compris entre 1 et ", len(liste1)
+            erreur=1
+    erreur=1
+    while erreur:
+        erreur=0
+        try:
+            print "choix2"
+            choix2=int(raw_input())
+            carte_tire=liste1[choix2-1]
+        except ValueError:
+            print "veuillez entrer un nombre valide"
+            erreur=1
+        except IndexError:
+            print "veuillez entrer un nombre compris entre 1 et ",len(liste1)
+            erreur=1
+        if choix2==0:
+            print "veuillez entrer un nombre compris entre 1 et ", len(liste1)
+            erreur=1
     while choix1==choix2:
         print "vous avez selectionne deux fois la meme carte, veuillez recommencer"
-        choix2=input("choix 2:")
+        erreur=1
+        while erreur:
+            erreur=0
+            try:
+                print "choix2"
+                choix2=int(raw_input())
+                carte_tire=liste1[choix2-1]
+            except ValueError:
+                print "veuillez entrer un nombre valide"
+                erreur=1
+            except IndexError:
+                print "veuillez entrer un nombre compris entre 1 et ",len(liste1)
+                erreur=1
+            if choix2==0:
+                print "veuillez entrer un nombre compris entre 1 et ", len(liste1)
+                erreur=1
     liste2.append(liste1[choix1-1])
     liste2.append(liste1[choix2-1])
     liste1.remove(liste1[choix1-1])

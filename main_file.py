@@ -27,6 +27,7 @@ nom_1=""
 nom_2=""
 somme_1=""
 somme_2=""
+advance=0
 
 nom_1=parameters.identify(nom_1,nom_2,1)
 nom_2=parameters.identify(nom_2,nom_1,2)
@@ -53,6 +54,17 @@ for i in range(4):
     decision.defausse(joueur_2,defausse_2, nom_2)
     action.delete()
     JOUEUR1,JOUEUR2=action.turn_value(JOUEUR1,JOUEUR2)
+if advance==1:
+	for i in range(4):
+		print "tour", i+5
+    	pioche,revealcard=action.show_card2(defausse_1,defausse_2,revealcard)
+    	decision.choice_card (JOUEUR1,JOUEUR2,revealcard,joueur_1,joueur_2,nom_1,nom_2)
+    	action.delete()
+    	decision.defausse(joueur_1,defausse_1,nom_1)
+    	action.delete()
+    	decision.defausse(joueur_2,defausse_2, nom_2)
+    	action.delete()
+    	JOUEUR1,JOUEUR2=action.turn_value(JOUEUR1,JOUEUR2)
 print "joueur_1",joueur_1
 print "joueur_2",joueur_2
 print "defausse_1",defausse_1

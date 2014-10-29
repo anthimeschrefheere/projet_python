@@ -25,7 +25,7 @@ def distribution(liste1,liste2,liste3,liste4):
             liste4.append(liste1[i])
     return liste2,liste3,liste4
 
-def actif_player(liste1,liste2,valeur_carte_j1,valeur_carte_j2,i,j):
+def actif_player(liste1,liste2,valeur_carte_j1,valeur_carte_j2,i,j): #voir comment khaoula a modifie le programme
     while 1:
         carte_tire_j1,valeur_carte_j1=decision.choice_card1(liste1,liste2,i)
         carte_tire_j2,valeur_carte_j2=decision.choice_card1(liste1,liste2,j)
