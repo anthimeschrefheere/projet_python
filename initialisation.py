@@ -43,3 +43,6 @@ def actif_player(liste1,liste2,valeur_carte_j1,valeur_carte_j2,i,j): #voir comme
     Shuffle(liste1)
     return(liste1,valeur_carte_j1,valeur_carte_j2)
 
+def affichage(liste1):
+    for i in range(len(liste1)):
+        print i+1 , " : ", liste1[i]
