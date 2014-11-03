@@ -1,12 +1,13 @@
 # -*- coding: utf8 -*-
+import affichage
 import parameters
 import initialisation
 import action
 import decision
 import comptage_point
-'''
-import affichage_joueur
-'''
+import help
+import game
+
 nombre=['7','8','9','10','Valet','Dame','Roi','As']
 figure=['trefle','carreau','coeur','pique']
 liste=[]
@@ -28,42 +29,31 @@ nom_2=""
 somme_1=""
 somme_2=""
 advance=0
-
-print "choix du style de joueur_2"
-print "1 jeux simple en 4 tours"
-print "2 jeux avance en 8 tours"
-print "3 pour l aide entre les 2 styles"
-erreur=1
-while erreur:
-    erreur=0
-    try:
-        advance=int(raw_input())
-    except ValueError:
-        print "veuillez entrer un nombre valide"
-        erreur=1
-
+'''
+choix,JOUEUR1,JOUEUR2,nom_1,nom_2,somme_1,somme_2,advance=parameters.value()
+'''
+advance=affichage.choix_mode(advance)
+action.delete()
 nom_1=parameters.identify(nom_1,nom_2,1)
+action.delete()
 nom_2=parameters.identify(nom_2,nom_1,2)
-print "______________________liste primaire____________________________"
+action.delete()
+print"_______________________liste primaire____________________________"
 initialisation.card_game(liste,nombre,figure)
-print'_______________________debut melange_____________________________'
+print"_______________________debut melange_____________________________"
 initialisation.Shuffle(liste)
 print"_______________________fin melange_______________________________"
 print"_______________________cartes melangees__________________________"
 initialisation.distribution(liste,joueur_1,joueur_2,pioche)
 print"_______________________cartes distribuees________________________"
 pioche,JOUEUR1,JOUEUR2=initialisation.actif_player(pioche,nombre,JOUEUR1,JOUEUR2,nom_1,nom_2)
-'''
-affichage_joueur.affichage_joueur(joueur_1,choix)
-affichage_joueur.affichage_joueur(joueur_2,choix)
-'''
+
+affichage.debut_tour()
 for i in range(4):
     print "tour", i+1
     joueur_1.sort()
     joueur_2.sort()
     pioche,revealcard=action.show_card (pioche,revealcard)
-    joueur_1.sort()
-    joueur_2.sort()
     decision.choice_card (JOUEUR1,JOUEUR2,revealcard,joueur_1,joueur_2,nom_1,nom_2)
     action.delete()
     joueur_1.sort()
@@ -73,14 +63,18 @@ for i in range(4):
     decision.defausse(joueur_2,defausse_2, nom_2)
     action.delete()
     JOUEUR1,JOUEUR2=action.turn_value(JOUEUR1,JOUEUR2)
+
+"""
+for i in range(4):
+    print "tour", i+1
+    JOUEUR1,JOUEUR2=game.simple(pioche,JOUEUR1,JOUEUR2,revealcard,joueur_1,joueur_2,nom_1,nom_2,defausse_1,defausse_2)
+"""
 if advance==2:
     for i in range(4):
         print "tour", i+5
         joueur_1.sort()
         joueur_2.sort()
         defausse_1,defausse_2,revealcard=action.show_card2(defausse_1,defausse_2,revealcard)
-        joueur_1.sort()
-        joueur_2.sort()
         decision.choice_card (JOUEUR1,JOUEUR2,revealcard,joueur_1,joueur_2,nom_1,nom_2)
         action.delete()
         joueur_1.sort()
@@ -90,11 +84,31 @@ if advance==2:
         decision.defausse(joueur_2,defausse_2, nom_2)
         action.delete()
         JOUEUR1,JOUEUR2=action.turn_value(JOUEUR1,JOUEUR2)
+
+"""
+if advance==2:
+    for i in range(4):
+        print "tour", i+5
+        JOUEUR1,JOUEUR2=game.avancee(revealcard,defausse_1,defausse_2,JOUEUR1,JOUEUR2,nom_1,nom_2)
+"""
 print "la main de ",nom_1, "est ",joueur_1
 print "la main de ",nom_2, "est ",joueur_2
 #print "defausse_1",defausse_1
 #print "defausse_2",defausse_2
 print"____________________________partie treminee_____________________"
+print"voulez vous afficher l aide pour le calcul des points?"
+print"appuyer sur 1 si oui un autre nombre pour continuer"
+erreur=1
+while erreur:
+    erreur=0
+    try:
+        aide=int(raw_input("choix:"))
+    except ValueError:
+        print "veuillez entrer un nombre valide"
+        erreur=1
+    if aide==1:
+        help.comptage()
+        erreur=1
 print"__________________________comptage des points_____________________"
 action.split(joueur_1,split_J1)
 action.split(joueur_2,split_J2)

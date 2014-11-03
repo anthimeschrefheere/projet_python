@@ -1,6 +1,8 @@
 # -*- coding: utf8 -*-
 from random import Random
+import affichage
 import decision
+import help
 generateur=Random()
 
 def card_game(liste1,liste2,liste3):
@@ -25,9 +27,28 @@ def distribution(liste1,liste2,liste3,liste4):
             liste4.append(liste1[i])
     return liste2,liste3,liste4
 
+def choix_help(nom):
+    print nom
+    print"selectionner 1 pour continuer le jeu"
+    print"selectionner un autre nombre pour demander l aide"
+    erreur=1
+    while erreur:
+        erreur=0
+        try:
+            choix=int(raw_input("choix:"))
+        except ValueError:
+            print "veuillez entrer un nombre valide"
+            erreur=1
+        if choix!=1:
+            help.aide_choix_joueur()
+            erreur=1
+
+
 def actif_player(liste1,liste2,valeur_carte_j1,valeur_carte_j2,i,j): #voir comment khaoula a modifie le programme
     while 1:
+        affichage.choix_help(i)
         carte_tire_j1,valeur_carte_j1=decision.choice_card1(liste1,liste2,i)
+        affichage.choix_help(j)
         carte_tire_j2,valeur_carte_j2=decision.choice_card1(liste1,liste2,j)
         while valeur_carte_j1==valeur_carte_j2:
             print"la valeur est identique veuillez retirer les cartes"
@@ -43,6 +64,3 @@ def actif_player(liste1,liste2,valeur_carte_j1,valeur_carte_j2,i,j): #voir comme
     Shuffle(liste1)
     return(liste1,valeur_carte_j1,valeur_carte_j2)
 
-def affichage(liste1):
-    for i in range(len(liste1)):
-        print i+1 , " : ", liste1[i]
