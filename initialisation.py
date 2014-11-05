@@ -43,7 +43,6 @@ def choix_help(nom):
             help.aide_choix_joueur()
             erreur=1
 
-
 def actif_player(liste1,liste2,valeur_carte_j1,valeur_carte_j2,i,j): #voir comment khaoula a modifie le programme
     while 1:
         affichage.choix_help(i)
@@ -63,4 +62,3 @@ def actif_player(liste1,liste2,valeur_carte_j1,valeur_carte_j2,i,j): #voir comme
         print j," est le joueur actif"
     Shuffle(liste1)
     return(liste1,valeur_carte_j1,valeur_carte_j2)
-

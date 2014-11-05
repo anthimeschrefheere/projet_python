@@ -6,10 +6,9 @@ import action
 import decision
 import comptage_point
 import help
-import game
 
 nombre=['7','8','9','10','Valet','Dame','Roi','As']
-figure=['trefle','carreau','coeur','pique']
+figure=['\xE2\x99\xA0','\xE2\x99\xA6','\xE2\x99\xA3','\xE2\x99\xA5']
 liste=[]
 joueur_1=[]
 joueur_2=[]
@@ -32,6 +31,10 @@ advance=0
 '''
 choix,JOUEUR1,JOUEUR2,nom_1,nom_2,somme_1,somme_2,advance=parameters.value()
 '''
+
+affichage.nom_jeux()
+print " "
+print " "
 advance=affichage.choix_mode(advance)
 action.delete()
 nom_1=parameters.identify(nom_1,nom_2,1)
@@ -49,6 +52,7 @@ print"_______________________cartes distribuees________________________"
 pioche,JOUEUR1,JOUEUR2=initialisation.actif_player(pioche,nombre,JOUEUR1,JOUEUR2,nom_1,nom_2)
 
 affichage.debut_tour()
+
 for i in range(4):
     print "tour", i+1
     joueur_1.sort()
@@ -64,11 +68,6 @@ for i in range(4):
     action.delete()
     JOUEUR1,JOUEUR2=action.turn_value(JOUEUR1,JOUEUR2)
 
-"""
-for i in range(4):
-    print "tour", i+1
-    JOUEUR1,JOUEUR2=game.simple(pioche,JOUEUR1,JOUEUR2,revealcard,joueur_1,joueur_2,nom_1,nom_2,defausse_1,defausse_2)
-"""
 if advance==2:
     for i in range(4):
         print "tour", i+5
@@ -85,12 +84,6 @@ if advance==2:
         action.delete()
         JOUEUR1,JOUEUR2=action.turn_value(JOUEUR1,JOUEUR2)
 
-"""
-if advance==2:
-    for i in range(4):
-        print "tour", i+5
-        JOUEUR1,JOUEUR2=game.avancee(revealcard,defausse_1,defausse_2,JOUEUR1,JOUEUR2,nom_1,nom_2)
-"""
 print "la main de ",nom_1, "est ",joueur_1
 print "la main de ",nom_2, "est ",joueur_2
 #print "defausse_1",defausse_1

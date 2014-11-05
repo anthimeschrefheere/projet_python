@@ -1,5 +1,23 @@
+# -*- coding: utf8 -*-
 import help
 import action
+
+def  nom_jeux():
+	print"____________________________________________"
+	print"         le double carre                    "
+	print"____________________________________________"
+	print"entrer 1 pour commencer le jeux"
+	print"entrer une autre valeur pour voir l'aide complete"
+	erreur=1
+	while erreur:
+		erreur=0
+		try:
+			decision=int(raw_input("choix:"))
+		except ValueError:
+			print "veuillez entrer un nombre valide"
+			erreur=1
+		if decision!=1:
+			help.general()
 
 def choix_mode(advance):
 	print "choix du style de jeux:"

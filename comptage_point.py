@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 def comptage(liste1,liste2):
 	i=0
 	j=0
@@ -28,7 +29,6 @@ def egalite(split_1,split_2,nombre,somme_1,somme_2,nom_1,nom_2):
 	else:
 		print "egalite parfaite"
 
-
 def comparateur(ident_1,ident_2,split_1,split_2,nombre,somme_1,somme_2,nom_1,nom_2):
 	i=0
 	while ident_1[i]==ident_2[i]:
@@ -41,6 +41,3 @@ def comparateur(ident_1,ident_2,split_1,split_2,nombre,somme_1,somme_2,nom_1,nom
 		print nom_2, " est vainqueur"
 	elif ident_1[i]==ident_2[i]:
 		egalite(split_1,split_2,nombre,somme_1,somme_2,nom_1,nom_2)
-
-
-

@@ -1,6 +1,6 @@
 # -*- coding: utf8 -*-
 import os
-
+ 
 def split(liste1,liste2):
     for i in range(len(liste1)):
         valeur=liste1[i]
@@ -25,4 +25,3 @@ def turn_value(i,j):
 
 def delete():
     trash=os.system('clear')
-
